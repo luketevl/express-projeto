@@ -25,7 +25,17 @@ class Perfis_Controller extends CI_Controller {
 		$p= $p->get_all();
 		$dados['dados'] = array();
 		$dados['dados'] = $p;
-		$this->parser->parse('perfis',$dados);
+		$this->parser->parse('perfis_listagem',$dados);
+	}
+	
+	public function save(){
+		$p = new Perfis();
+		$p= $p->get_by_id(1);
+		$dados['dados'] = array();
+		$dados['dados'] = $p;
+		$dados['descricao_perf'] = $p[0]['descricao_perf'];
+		$dados['id_perf'] = $p[0]['id_perf'];
+		$this->parser->parse('perfis_form',$dados);
 	}
 }
 

@@ -10,7 +10,7 @@
   	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<tr>	
-				<th>Descricao_perf</th>
+				<th>Nome</th>
 				<th>Ações</th>
 			</tr>
 		</thead>
