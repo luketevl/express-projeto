@@ -145,6 +145,9 @@ class Perfis extends DataMapper {
 	function get_all(){
 		return $this->get()->all_to_array();
 	}
+	function get_by_id($id){
+		return $this->where('id_perf',$id)->get()->all_to_array();
+	}
 }
 
 /* End of file template.php */
