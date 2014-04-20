@@ -28,14 +28,52 @@ class Perfis_Controller extends CI_Controller {
 		$this->parser->parse('perfis_listagem',$dados);
 	}
 	
-	public function save(){
-		$p = new Perfis();
-		$p= $p->get_by_id(1);
+	public function load_new(){
 		$dados['dados'] = array();
-		$dados['dados'] = $p;
-		$dados['descricao_perf'] = $p[0]['descricao_perf'];
-		$dados['id_perf'] = $p[0]['id_perf'];
+		$dados['descricao_perf'] = '';
+		$dados['id_perf'] = '';
+		$dados['perm_indicadores'] = 'checked="checked"';
+		$dados['perm_opcoes'] = 'checked="checked"';
+		$dados['perm_perfis'] = 'checked="checked"';
+		$dados['perm_projetos'] = 'checked="checked"';
+		$dados['perm_solicitacoes'] = 'checked="checked"';
+		$dados['perm_usuario'] = 'checked="checked"';
+//		echo "<pre>"; print_r($_data); echo "</pre>";
 		$this->parser->parse('perfis_form',$dados);
+	}
+	
+	public function load_form(){
+		$p = new Perfis();
+		$p= $p->get_by_id($_GET['id_perf']);
+		$dados['dados'] = array();
+		$dados = $p[0];
+		$opcoes = str_split($dados['opcoes_perf']);
+		$dados['perm_usuario'] = empty($opcoes[0])?'':'checked="checked"';
+		$dados['perm_solicitacoes'] = empty($opcoes[1])?'':'checked="checked"';
+		$dados['perm_projetos'] = empty($opcoes[2])?'':'checked="checked"';
+		$dados['perm_perfis'] = empty($opcoes[3])?'':'checked="checked"';
+		$dados['perm_opcoes'] = empty($opcoes[4])?'':'checked="checked"';
+		$dados['perm_indicadores'] = empty($opcoes[5])?'':'checked="checked"';
+			
+		//echo "<pre>"; print_r($p[0]); echo "</pre>";
+		$this->parser->parse('perfis_form',$dados);
+	}
+	
+	public function save(){
+		$_data = $this->input->post();
+		$_data['perm_usuario'] 		= array_key_exists('perm_usuario',$_data)?'1':'0';
+		$_data['perm_solicitacoes'] = array_key_exists('perm_solicitacoes',$_data)?'1':'0';
+		$_data['perm_projetos']		= array_key_exists('perm_projetos',$_data)?'1':'0';
+		$_data['perm_perfis']		= array_key_exists('perm_perfis',$_data)?'1':'0';
+		$_data['perm_opcoes']		= array_key_exists('perm_opcoes',$_data)?'1':'0';
+		$_data['perm_indicadores']	= array_key_exists('perm_indicadores',$_data)?'1':'0';
+		$dados['id_perf'] 			= $_data['id_perf'];	
+		$dados['descricao_perf'] 	= $_data['descricao_perf'];
+		$dados['opcoes_perf'] 		= $_data['perm_usuario'] . $_data['perm_solicitacoes'] . $_data['perm_projetos'] . $_data['perm_perfis'] . $_data['perm_opcoes'] . $_data['perm_indicadores'] ;		
+		$p = new Perfis();
+		//echo "<pre>"; print_r($_data); echo "</pre>";
+		$p->salvar($dados);
+		redirect('perfis_controller');
 	}
 }
 

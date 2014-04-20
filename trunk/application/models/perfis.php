@@ -127,19 +127,20 @@ class Perfis extends DataMapper {
 	*/
 
 	function salvar($dados){
-		$o = new Opcao();
+		$p = new Perfis();
 		//echo "<pre>"; print_r($dados); echo "</pre>";
-		$o->cep_origem = $dados['cep_origem'];
-		$o->id_usu = $dados['id_usu'];
-		if(!empty($dados['id_opc'])){
-			$o->where('id_opc', $dados['id_opc']);
-			$o->update($dados);
+		$p->descricao_perf 	 = $dados['descricao_perf'];
+		$p->opcoes_perf		 = $dados['opcoes_perf'];
+		if(!empty($dados['id_perf'])){
+			//echo "oi";
+			$p->where('id_perf', $dados['id_perf']);
+			$p->update($dados);
 		}
 		else{
-			$o->save();
+			$p->save();
 		}
 		//echo "<pre>"; print_r($o); echo "</pre>";
-		return $o;	
+		return $p;	
 	}
 	
 	function get_all(){
@@ -148,6 +149,15 @@ class Perfis extends DataMapper {
 	function get_by_id($id){
 		return $this->where('id_perf',$id)->get()->all_to_array();
 	}
+
+	function inserir_perfil($dados){
+		$p = new Perfis();
+		$p->descricao_perf= $dados['descricao_perf'];
+		$p->email_usu=$dados['email'];
+		$p->dt_criacao_usu = date('Y-m-d h:m:s');
+		$p->save();
+		return $p;	
+}
 }
 
 /* End of file template.php */

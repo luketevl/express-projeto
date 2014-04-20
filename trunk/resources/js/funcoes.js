@@ -67,6 +67,17 @@ if($('#qtd_arquivos').text() <= 0){
 $('#listar_arquivos').click(function(){
 	redirect('?listar_produtos=1');
 });
-
-
+	$('#btn-novo').click(function(){
+		var url = $(location).attr('href');
+		$(window.document.location).attr('href',url+'/load_new');
+		
+	});
+	$('button').click(function(){
+		if($(this).attr('id') == 'btn_edit'){
+			var temp = $(this).parent().parent();
+			var id_perf = temp.find('td#id_perf').html();
+			var url = $(location).attr('href');
+			$(window.document.location).attr('href',url+'/load_form?id_perf='+id_perf);
+		}
+	})
 	});
