@@ -3,15 +3,15 @@
 ?>
 <body>
 	<blockquote>
-	  <p> de Perfis</p>
+	  <p> Cadastro de Perfis</p>
 	</blockquote>
 	
-	<form class="form-horizontal" role="form">
-      <input type="hidden" class="form-control" id="inputNome" placeholder="Digite o nome do perfil" value='{id_perf}' >
+	<form class="form-horizontal" role="form" action='save' method='POST'>
+      <input type="hidden" class="form-control" id="inputId" placeholder="Digite o nome do perfil" name='id_perf' value='{id_perf}' >
 	  <div class="form-group">
 	    <label for="inputNome" class="col-sm-2 control-label">Nome</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="inputNome" placeholder="Digite o nome do perfil" value='{descricao_perf}' >
+	      <input type="text" class="form-control" id="inputNome" placeholder="Digite o nome do perfil" name='descricao_perf' value='{descricao_perf}'>
 	    </div>
 	  </div>
 
@@ -19,32 +19,32 @@
 	    <div class="col-sm-offset-2 col-sm-10">
 	      <div class="checkbox">
 	        <label>
-	          <input type="checkbox" name="perm_usuario" checked="checked"> Cadastrar Usuário
+	          <input type="checkbox" name="perm_usuario" {perm_usuario}> Cadastrar Usuário
 	        </label>
 	    </div>
   	    	<div class="checkbox">
 		        <label>
-		          <input type="checkbox" name="perm_solicitacoes" checked="checked"> Cadastrar Solicitação
+		          <input type="checkbox" name="perm_solicitacoes" {perm_solicitacoes}> Cadastrar Solicitação
 		        </label>
 	        </div>
 	        <div class="checkbox">
 		        <label>
-		          <input type="checkbox" name="perm_projetos" checked="checked"> Cadastrar Projetos
+		          <input type="checkbox" name="perm_projetos" {perm_projetos}> Cadastrar Projetos
 		        </label>
 	        </div>
 	        <div class="checkbox">
 		        <label>
-		          <input type="checkbox" name="perm_perfis" checked="checked"> Cadastrar Perfil
+		          <input type="checkbox" name="perm_perfis" {perm_perfis}> Cadastrar Perfil
 		        </label>
 	        </div>
         	<div class="checkbox">
 		        <label>
-		          <input type="checkbox" name="perm_opcoes" checked="checked"> Cadastrar Opções
+		          <input type="checkbox" name="perm_opcoes" {perm_opcoes}> Cadastrar Opções
 		        </label>
 	        </div>
 	        <div class="checkbox">
 		        <label>
-		          <input type="checkbox" name="perm_indicadores" checked="checked"> Cadastrar Indicadores
+		          <input type="checkbox" name="perm_indicadores" {perm_indicadores}> Cadastrar Indicadores
 		        </label>
 	        </div>
 	  </div>
