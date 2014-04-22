@@ -44,7 +44,7 @@ class Perfis_Controller extends CI_Controller {
 	
 	public function load_form(){
 		$p = new Perfis();
-		$p= $p->get_by_id($_GET['id_perf']);
+		$p= $p->get_by_id($_GET['id']);
 		$dados['dados'] = array();
 		$dados = $p[0];
 		$opcoes = str_split($dados['opcoes_perf']);
@@ -74,6 +74,16 @@ class Perfis_Controller extends CI_Controller {
 		//echo "<pre>"; print_r($_data); echo "</pre>";
 		$p->salvar($dados);
 		redirect('perfis_controller');
+	}
+	
+	public function deletar(){
+		$p = new Perfis();
+		if($p->deletar($_GET['id'])){
+			redirect('perfis_controller');
+		}	
+		else{
+			echo "possui vinculos";			
+		}	
 	}
 }
 

@@ -19,6 +19,15 @@ create database express;
 		foreign key(id_perf) references perfis(id_perf)
 		)engine=MYiSAM;
 	
+	create table funcoes(
+		id_func int UNSIGNED AUTO_INCREMENT  PRIMARY KEY NOT NULL,
+		ativo char(1) not null,
+		nome_func text not null,
+		data_criacao_func dateTime not null,
+		id_proj int not null,
+		foreign key(id_proj) references projetos(id_proj)
+	)engine=MYiSAM;
+	
 	create table projetos(
 		id_proj int UNSIGNED AUTO_INCREMENT  PRIMARY KEY NOT NULL,
 		nome_proj text not null,
