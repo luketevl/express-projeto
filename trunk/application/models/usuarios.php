@@ -19,7 +19,7 @@
  * @author		Phil DeJarnett
  * @link		http://www.overzealous.com
  */
-class Usuario extends DataMapper {
+class Usuarios extends DataMapper {
 
 	// Uncomment and edit these two if the class has a model name that
 	//   doesn't convert properly using the inflector_helper.
@@ -150,7 +150,50 @@ function inserir_usuario($dados){
 	$u->save();
 	return $u;	
 }
-
+	function get_by_id($id){
+		return $this->where('id_usu',$id)->get()->all_to_array();
+	}
+	
+	function deletar($id_usu){
+		$this->db->select('*');
+		$this->db->from('solicitacoes');
+		$this->db->where('id_usu',$id_usu);
+		$resultado = $this->db->get();
+		//echo "<pre>"; print_r($resultado); echo "</pre>";
+		if(!empty($resultado->num_rows)){
+			return false;
+		}
+		else {
+			$this->db->where('id_usu',$id_usu);
+			$this->db->delete('usuarios');
+			return true;
+		}
+	}
+	
+	function get_all(){
+		return $this->get()->all_to_array();
+	}
+	
+	function salvar($dados){
+		$u = new Usuarios();
+		//echo "<pre>"; print_r($dados); echo "</pre>";
+		$u->ativo			 = $dados['ativo'];
+		$u->nome_usu		 = $dados['nome_usu'];
+		$u->email_usu		 = $dados['email_usu'];
+		$u->senha_usu		 = $dados['senha_usu'];
+		$u->dt_criacao_usu	 = date('Y-m-d h:m:s');
+		$u->id_perf			 = $dados['id_perf'];
+		
+		if(!empty($dados['id_usu'])){
+			$u->where('id_usu', $dados['id_usu']);
+			$u->update($dados);
+		}
+		else{
+			$u->save();
+		}
+		//echo "<pre>"; print_r($o); echo "</pre>";
+		return $u;
+	}
 }
 
 /* End of file template.php */

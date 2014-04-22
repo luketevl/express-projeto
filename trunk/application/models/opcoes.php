@@ -19,7 +19,7 @@
  * @author		Phil DeJarnett
  * @link		http://www.overzealous.com
  */
-class Opcao extends DataMapper {
+class Opcoes extends DataMapper {
 
 	// Uncomment and edit these two if the class has a model name that
 	//   doesn't convert properly using the inflector_helper.
@@ -127,17 +127,15 @@ class Opcao extends DataMapper {
 	*/
 
 
- function existe_opcoes($id_usu){
- 	$o = new Opcao();
- 	$o->where('id_usu',$id_usu);
- 	return $o->get();
- }
-
 function salvar($dados){
-	$o = new Opcao();
+	$o = new Opcoes();
 	//echo "<pre>"; print_r($dados); echo "</pre>";
-	$o->cep_origem = $dados['cep_origem'];
-	$o->id_usu = $dados['id_usu'];
+	$o->proposito_opc = $dados['proposito_opc'];
+	$o->servidor_smtp = $dados['servidor_smtp'];
+	$o->usuario_smtp = $dados['usuario_smtp'];
+	$o->senha_smtp = $dados['senha_smtp'];
+	$o->porta_smtp = $dados['porta_smtp'];
+	$o->id_opc = $dados['id_opc'];
 	if(!empty($dados['id_opc'])){
 		$o->where('id_opc', $dados['id_opc']);
 		$o->update($dados);
@@ -148,6 +146,9 @@ function salvar($dados){
 	return $o;	
 }
 
+	function get_all(){
+		return $this->get()->all_to_array();
+}
 }
 
 /* End of file template.php */

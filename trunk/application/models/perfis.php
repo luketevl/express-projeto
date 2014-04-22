@@ -146,6 +146,7 @@ class Perfis extends DataMapper {
 	function get_all(){
 		return $this->get()->all_to_array();
 	}
+	
 	function get_by_id($id){
 		return $this->where('id_perf',$id)->get()->all_to_array();
 	}
@@ -158,6 +159,21 @@ class Perfis extends DataMapper {
 		$p->save();
 		return $p;	
 }
+	function deletar($id_perf){
+		$this->db->select('*');
+		$this->db->from('usuarios');
+		$this->db->where('id_perf',$id_perf);
+		$resultado = $this->db->get();
+		//echo "<pre>"; print_r($resultado); echo "</pre>"; 
+		if(!empty($resultado->num_rows)){
+			return false;	
+		}
+		else {
+			$this->db->where('id_perf',$id_perf);
+			$this->db->delete('perfis');
+			return true;
+		}
+	}
 }
 
 /* End of file template.php */

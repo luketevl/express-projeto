@@ -75,9 +75,17 @@ $('#listar_arquivos').click(function(){
 	$('button').click(function(){
 		if($(this).attr('id') == 'btn_edit'){
 			var temp = $(this).parent().parent();
-			var id_perf = temp.find('td#id_perf').html();
+			var id = temp.find('td#id').html();
 			var url = $(location).attr('href');
-			$(window.document.location).attr('href',url+'/load_form?id_perf='+id_perf);
+			$(window.document.location).attr('href',url+'/load_form?id='+id);
+		}
+	})
+	$('button').click(function(){
+		if($(this).attr('id') == 'btn_remove'){
+			var temp = $(this).parent().parent();
+			var id = temp.find('td#id').html();
+			var url = $(location).attr('href');
+			$(window.document.location).attr('href',url+'/deletar?id='+id);
 		}
 	})
 	});
