@@ -3,6 +3,7 @@ $(document).ready(function(){
 
 	$('.campo-data').mask('9999-99-99');
 	$('.campo-double').mask('999.99');
+	$('.campo-senha').mask('******?******',{placeholder:""});
 
 	$('#cep').keypress(function(){
 		$('#grupoCep').removeClass('has-error');
