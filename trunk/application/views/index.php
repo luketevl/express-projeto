@@ -21,13 +21,13 @@ require_once ('includes/head.php');
 	<nav id="menu">
 		<ul class="nav nav-tabs nav-justified">
 			<li class="active"><a>Início</a></li>
-			<li value="usuarios_controller/"><a>Usuários</a></li>
-			<li value="perfis_controller/"><a>Perfil</a></li>
-			<li value="projetos_controller/"><a>Projetos</a></li>
-			<li value="funcoes_controller/"><a>Funções</a></li>
-			<li value="indicadores_controller/"><a>Indicadores</a></li>
-			<li value="solicitacoes_controller/"><a>Solicitações</a></li>
-			<li><a href="acesso/deslogar">Sair</a></li>
+			<li value="<?php echo base_url();?>index.php/usuarios_controller/"><a>Usuários</a></li>
+			<li value="<?php echo base_url();?>index.phpperfis_controller/"><a>Perfil</a></li>
+			<li value="<?php echo base_url();?>index.phpprojetos_controller/"><a>Projetos</a></li>
+			<li value="<?php echo base_url();?>index.phpfuncoes_controller/"><a>Funções</a></li>
+			<li value="<?php echo base_url();?>index.phpindicadores_controller/"><a>Indicadores</a></li>
+			<li value="<?php echo base_url();?>index.phpsolicitacoes_controller/"><a>Solicitações</a></li>
+			<li><a href="<?php echo base_url();?>index.php/acesso/deslogar">Sair</a></li>
 		</ul>
 	</nav>
 			<iframe src=""	style="width: 100%; padding: 0px; margin: 0px; border: none; display: block; min-height: 600px; overflow: hidden;">
