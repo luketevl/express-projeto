@@ -46,6 +46,7 @@ class Usuarios_Controller extends CI_Controller {
 		$dados['dados'] = array();
 		$dados = $u[0];
 		$dados['opcao_ativo'] = $u[0]['ativo'] == 1 ? "checked": '';
+		$dados['opcao_adm'] = $_GET['id']==USER_PADRAO ? "disabled" : '';
 		//echo "<pre>"; print_r($u[0]); echo "</pre>";
 		$this->parser->parse('usuarios_form',$dados);
 	}
@@ -64,7 +65,17 @@ class Usuarios_Controller extends CI_Controller {
 		$u = new Usuarios();
 		//echo "<pre>"; print_r($dados); echo "</pre>";
 		$u->salvar($dados);
-		redirect('usuarios_controller');
+		if($u->exists()){
+			//	 	echo "<pre>"; print_r($this->session->userdata); echo "</pre>";
+			$feedback['cod'] = '1';
+			$feedback['msg'] = 'Usuário <strong>'.$u->nome_usu.'</strong> cadastrado.';
+		}
+		else {
+			$feedback['cod'] = '-1';
+			$feedback['msg'] = 'Já existe este e-mail';
+		}
+		echo json_encode($feedback);
+		//redirect('usuarios_controller');
 	}
 	
 	public function deletar(){

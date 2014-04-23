@@ -37,5 +37,12 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
+/**
+ * Constantes minhas
+ */
+define('PERFIL_ADM',		'1');
+define('USER_PADRAO',		'1');
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

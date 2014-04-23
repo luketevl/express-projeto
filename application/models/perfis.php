@@ -170,6 +170,7 @@ class Perfis extends DataMapper {
 		}
 		else {
 			$this->db->where('id_perf',$id_perf);
+			$this->db->where('id_perf !=',PERFIL_ADM);
 			$this->db->delete('perfis');
 			return true;
 		}

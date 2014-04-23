@@ -175,7 +175,11 @@ function inserir_usuario($dados){
 	}
 	
 	function salvar($dados){
-		$u = new Usuarios();
+		$u = $this->verifica_email($dados['email_usu']);
+		if($u->exists()){
+			return new Usuarios();
+		}
+		echo "testeeeeeeeeeeeeeeeeeeeeee";
 		//echo "<pre>"; print_r($dados); echo "</pre>";
 		$u->ativo			 = $dados['ativo'];
 		$u->nome_usu		 = $dados['nome_usu'];
@@ -183,7 +187,6 @@ function inserir_usuario($dados){
 		$u->senha_usu		 = $dados['senha_usu'];
 		$u->dt_criacao_usu	 = date('Y-m-d h:m:s');
 		$u->id_perf			 = $dados['id_perf'];
-		
 		if(!empty($dados['id_usu'])){
 			$u->where('id_usu', $dados['id_usu']);
 			$u->update($dados);
