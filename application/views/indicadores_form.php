@@ -4,7 +4,7 @@
 <body>
 <section class="ajuste-98-porc">
 	<blockquote>
-	  <p> Cadastro de Usuário</p>
+	  <p> Cadastro de Indicadores</p>
 	</blockquote>
 	
 		<form class="form-horizontal" role="form" id="cadastrar" method="POST" action="save">
@@ -63,7 +63,7 @@
   		  <div class="form-group">
 		    <label for="inputNome" class="col-sm-2 control-label">Valor</label>
 		    <div class="col-sm-10">
-				  <input type="text" class="form-control" placeholder="Valor do Indicador" name="valor" required name="valor" value="{valor}">
+				  <input type="text" class="form-control campo-double" placeholder="Valor do Indicador" name="valor" required name="valor" value="{valor}">
 		    </div>
 		  </div>
 		  
@@ -77,7 +77,7 @@
   		  <div class="form-group">
 		    <label for="inputNome" class="col-sm-2 control-label">Data do Indicador</label>
 		    <div class="col-sm-10">
-				  <input type="text" class="form-control" placeholder="Data de Referencia do Identificador" name="data_referencia_ind" required value="{data_referencia_ind}">
+				  <input type="text" class="form-control campo-data" placeholder="Data de Referencia do Identificador" name="data_referencia_ind" required value="{data_referencia_ind}">
 		    </div>
 		  </div>
 		  
