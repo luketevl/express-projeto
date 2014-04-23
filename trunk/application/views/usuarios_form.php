@@ -1,6 +1,61 @@
 <?php
 	require_once('includes/head.php');
 ?>
+<script>
+
+$(document).ready(function(){
+	
+
+$('#cadastro_senha').keypress(function(){
+			
+			//console.log($(this).parent('#group-email'));
+			
+			var elemento = $(this).parent('#group_cadastrar_senha');
+			if($('#cadastro_senha').val().length >= 5){
+				$(elemento).removeClass('has-error');
+			}
+		});
+
+
+		$('#cadastrar').submit(function(event){
+			var formulario = $('form#cadastrar');
+			var dados = formulario.serialize();
+			if($('#cadastro_senha').val().length < 6){
+				var n = noty({text: 'Senha deve conter no mínimo 6 caracteres.', type: 'error',shadow: false, styling: "bootstrap" , hide: true, delay: 500});
+				removeTodos(n);
+				$('#group_cadastrar_senha').addClass('has-error');
+			        $('#cadastro_senha').focus(function(){
+			        	 $(this).select();
+			        	});
+			}
+			else{
+				if($('#cadastro_senha_rp').val() != $('#cadastro_senha').val()){
+					var n = noty({text: 'A confirmação da senha digitada não é igual a senha.', type: 'error',shadow: false, styling: "bootstrap" , hide: true, delay: 500});
+				}else{
+			        $.ajax({
+			          type: "POST",
+			          url: "usuarios_controller/save",
+			          data: dados
+			        })
+			          .success(function( msg ) {
+			          	if(feedback(msg)){
+						setInterval(function(){
+			          		document.location = 'upload';
+								},3000);
+			          	}
+						$('#group-email').addClass('has-error');
+				        $('#group-email > input[name="email"]').focus(function(){
+				        	 $(this).select();
+				        	});
+			          });
+					  event.preventDefault;
+				}
+			}
+		        	  return false;
+				});
+});
+
+</script>
 <body>
 <section class="ajuste-98-porc">
 	<blockquote>

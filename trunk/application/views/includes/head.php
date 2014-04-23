@@ -40,7 +40,6 @@
 		<script src="<?php echo base_url()?>resources/js/jquery.MultiFile.js "></script>
 
 		<script src="<?php echo base_url()?>resources/js/jquery-upload.js "></script>
-		<script src="<?php echo base_url()?>resources/js/jquery.responsiveiframe.js "></script>
 
 		<script src="<?php echo base_url()?>resources/js/funcoes.js"></script>
 

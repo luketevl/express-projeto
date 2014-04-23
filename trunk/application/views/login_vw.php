@@ -1,6 +1,97 @@
 <?php
 	require_once('includes/head.php');
 ?>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+/*
+		$("#login").validate({
+			submitHandler: function(form){
+			var formulario = $('form#login');
+			var dados = formulario.serialize();
+			 $.ajax({
+		          type: "POST",
+		          url: "acesso/cadastrar",
+		          data: dados
+		        })
+		          .success(function( msg ) {
+		        	var n = noty({text: msg, type: 'error'});
+		        	removeTodos(n);
+		          });
+				return false;
+			}
+		});
+*/
+	function removeTodos(n){
+		
+	}
+	
+	function feedback(msg){
+		var obj = jQuery.parseJSON(msg);
+		if(obj.cod == '-1'){
+        	var n = noty({text: obj.msg, type: 'error', shadow: false, styling: "bootstrap" , hide: true, delay: 500,
+			killer: true
+
+        });
+        	removeTodos(n);
+	          	}
+      	else if(obj.cod == '1'){
+      		var n = noty({text: obj.msg, type: 'success',shadow: false, styling: "bootstrap" , hide: true, delay: 500,
+      	killer: true
+		});
+  			removeTodos(n);
+      	}
+      	return obj.cod;
+}
+		$('input[name="email"]').keypress(function(){
+			//$(this).parent('#group-email');
+			//console.log($(this).parent('#group-email'));
+			console.log(this);
+			var elemento = $(this).parents('.form-group');
+			console.log(elemento);
+			$(elemento).removeClass('has-error');
+		});
+
+$('#login_senha').keypress(function(){
+			
+			console.log($(this).parent('#group-email'));
+			var elemento = $(this).parent('#group_login_senha');
+			if($('#login_senha').val().length >= 5){
+				$(elemento).removeClass('has-error');
+			}
+		});
+		$('#login').submit(function(event){
+			var formulario = $('form#login');
+			var dados = formulario.serialize();
+			if($('#login_senha').val().length < 6){
+				var n = noty({text: 'Senha deve conter no mínimo 6 caracteres.', type: 'error',shadow: false, styling: "bootstrap" , hide: true, delay: 500});
+				removeTodos(n);
+				$('#group_login_senha').addClass('has-error');
+			        $('#login_senha').focus(function(){
+			        	 $(this).select();
+			        	});
+			}
+			else {
+	        $.ajax({
+	          type: "POST",
+	          url: "acesso/logar",
+	          data: dados
+	        })
+	          .success(function( msg ) {
+	          	if(feedback(msg)){
+					setInterval(function(){
+		          		document.location = 'welcome';
+						},3000);
+	          	}
+          		//var n = noty({text: msg, type: 'error',shadow: false, styling: "bootstrap" , hide: true, delay: 500});
+	          });
+	          event.preventDefault;
+			}
+        	  return false;
+			});
+	});
+
+</script>
 	<body>
 	<hgroup class="bs-callout bs-callout-info">
 	<h4> Acesso ao sistema </h4>

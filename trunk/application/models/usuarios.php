@@ -128,20 +128,20 @@ class Usuarios extends DataMapper {
 
 
  function verifica_login($email, $senha){
- 	$u = new Usuario();
+ 	$u = new Usuarios();
  	$u->where('email_usu',$email);
  	$u->where('senha_usu',$senha);
  	return $u->get();
  }
 
 function verifica_email($email){
- 	$u = new Usuario();
+ 	$u = new Usuarios();
  	$u->where('email_usu',$email);
  	return $u->get();
  }
 
 function inserir_usuario($dados){
-	$u = new Usuario();
+	$u = new Usuarios();
 	$u->ativo = 1;
 	$u->nome_usu= $dados['nome'];
 	$u->email_usu=$dados['email'];
