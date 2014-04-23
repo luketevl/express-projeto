@@ -75,6 +75,8 @@ create database express;
 		foreign key(id_soli) references solicitacoes(id_soli),
 		id_ind int not null,
 		foreign key(id_ind) references indicadores(id_ind),
+		id_func int not null,
+		foreign key(id_func) references funcoes(id_func),
 		data_criacao_soli_itens dateTime not null,
 		qtd_soli_itens double(5,2) not null,
 		qtd_alrrlr_soli_itens double(5,2) not null,

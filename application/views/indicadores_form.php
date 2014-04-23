@@ -2,6 +2,7 @@
 	require_once('includes/head.php');
 ?>
 <body>
+<section class="ajuste-98-porc">
 	<blockquote>
 	  <p> Cadastro de Usuário</p>
 	</blockquote>
@@ -86,3 +87,4 @@
 	    </div>
 	  </div>
 		</form>
+</section>

@@ -18,12 +18,11 @@ class Welcome extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index(){
-		if(!empty($this->session->userdata['id_ent'])){
-			redirect('upload');
+		if(empty($this->session->userdata['id_ent'])){
+			//redirect('acesso');
 		}
-		else{
-			$this->load->view('login_vw');
-		}
+		$dados = array();
+		$this->parser->parse('index',$dados);
 	}
 }
 
