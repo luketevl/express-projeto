@@ -92,7 +92,7 @@ $('#cadastro_senha').keypress(function(){
   		  <div class="form-group">
 		    <label for="inputNome" class="col-sm-2 control-label">Senha</label>
 		    <div class="col-sm-10">
-				  <input type="password" class="form-control" placeholder="Senha" name="senha_usu" id="cadastro_senha" minlength="6" required value="{senha_usu}">
+				  <input type="password" class="form-control campo-senha" placeholder="Senha" name="senha_usu" id="cadastro_senha" minlength="6" required value="{senha_usu}">
 		    </div>
 		  </div>
 		  
@@ -100,7 +100,7 @@ $('#cadastro_senha').keypress(function(){
 		    		  <div class="form-group">
 		    <label for="inputNome" class="col-sm-2 control-label">Confirmar senha</label>
 		    <div class="col-sm-10">
-			  <input type="password" class="form-control" placeholder="Confirmar senha" name="senha_usu" id="cadastro_senha_rp" minlength="6" required value="{senha_usu}">
+			  <input type="password" class="form-control campo-senha" placeholder="Confirmar senha" name="senha_usu" id="cadastro_senha_rp" minlength="6" required value="{senha_usu}">
 		    </div>
 		  </div>
 		  
