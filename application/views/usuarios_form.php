@@ -12,13 +12,15 @@ $(document).ready(function(){
 			killer: true
 
         });
-        	removeTodos(n);
+        	
+        	return false;
 	          	}
       	else if(obj.cod == '1'){
       		var n = noty({text: obj.msg, type: 'success',shadow: false, styling: "bootstrap" , hide: true, delay: 500,
       	killer: true
 		});
-  			removeTodos(n);
+  			
+  			return true;
       	}
       	return obj.cod;
 }
@@ -39,7 +41,7 @@ $('#cadastro_senha').keypress(function(){
 			var dados = formulario.serialize();
 			if($('#cadastro_senha').val().length < 6){
 				var n = noty({text: 'Senha deve conter no mínimo 6 caracteres.', type: 'error',shadow: false, styling: "bootstrap" , hide: true, delay: 500});
-				removeTodos(n);
+				
 				$('#group_cadastrar_senha').addClass('has-error');
 			        $('#cadastro_senha').focus(function(){
 			        	 $(this).select();
@@ -57,7 +59,7 @@ $('#cadastro_senha').keypress(function(){
 			          .success(function( msg ) {
 			          	if(feedback(msg)){
 						setInterval(function(){
-			          		document.location = 'usuarios_controller';
+							window.location.href ="<?php echo base_url()?>index.php/usuarios_controller/"; 														
 								},3000);
 			          	}
 						$('#group-email').addClass('has-error');
@@ -125,7 +127,7 @@ $('#cadastro_senha').keypress(function(){
   		  <div class="form-group">
 		    <label for="inputNome" class="col-sm-2 control-label">Perfil</label>
 		    <div class="col-sm-10">
-				  <input type="text" class="form-control" placeholder="Perfil" name="id_perf" required name="nome_usu" value="{id_perf}" {opcao_adm}>
+			<?php $this->load->view('includes/as_perfil')?>
 		    </div>
 		  </div>
 		  
@@ -135,6 +137,7 @@ $('#cadastro_senha').keypress(function(){
 	    </div>
 	  </div>
 		</form>
+		
 </section>
 </body>
 </html>

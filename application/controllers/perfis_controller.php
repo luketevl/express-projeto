@@ -85,6 +85,24 @@ class Perfis_Controller extends CI_Controller {
 			echo "possui vinculos";			
 		}	
 	}
+	
+	public function as_perfil(){
+		$term = trim($_GET['term']);
+		$p = new Perfis();
+		$p= $p->get_by_descricao($term);
+		foreach($p as $k=>$v){
+			foreach($v as $key=>$valor){
+				if($key == 'descricao_perf'){
+					$retorno[$k]['label']= $valor;
+					$retorno[$k]['value']= $valor;
+				}
+				else if($key == 'id_perf'){
+					$retorno[$k]['id_perf']= $valor;
+				}
+			}
+		}
+		echo json_encode($retorno);
+	}
 }
 
 /* End of file welcome.php */

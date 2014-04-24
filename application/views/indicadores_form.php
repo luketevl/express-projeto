@@ -14,9 +14,9 @@
 		  		    <label for="inputNome" class="col-sm-2 control-label">Tipo</label>
 		    <div class="col-sm-10">
 			 <select class="form-control" name="tipo_ind">
-			  <option value="D">Deflator</option>
-			  <option value="I">Inflator</option>
-			  <option value="IM">Item não Mensurável</option>
+			  <option value="D" {select_deflator}>Deflator</option>
+			  <option value="I" {select_inflator}>Inflator</option>
+			  <option value="IM" {select_item}>Item não Mensurável</option>
 			 </select>
 		    </div>
 		  </div>

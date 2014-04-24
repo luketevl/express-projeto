@@ -150,6 +150,9 @@ class Perfis extends DataMapper {
 	function get_by_id($id){
 		return $this->where('id_perf',$id)->get()->all_to_array();
 	}
+	function get_by_descricao($val){
+		return $this->like('descricao_perf',$val)->get()->all_to_array();
+	}
 
 	function inserir_perfil($dados){
 		$p = new Perfis();

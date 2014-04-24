@@ -42,11 +42,14 @@ class Usuarios_Controller extends CI_Controller {
 	
 	public function load_form(){
 		$u = new Usuarios();
-		$u= $u->get_by_id($_GET['id']);
+		$u = $u->get_by_id($_GET['id']);
+		$p = new Perfis();
+		$p = $p->get_by_id($u[0]['id_perf']);
 		$dados['dados'] = array();
 		$dados = $u[0];
 		$dados['opcao_ativo'] = $u[0]['ativo'] == 1 ? "checked": '';
 		$dados['opcao_adm'] = $_GET['id']==USER_PADRAO ? "disabled" : '';
+		$dados['descricao_perf'] = $p[0]['descricao_perf'];
 		//echo "<pre>"; print_r($u[0]); echo "</pre>";
 		$this->parser->parse('usuarios_form',$dados);
 	}
@@ -60,15 +63,16 @@ class Usuarios_Controller extends CI_Controller {
 		else{
 			$dados['ativo'] = '0';
 		}
-	//	echo "<pre>"; print_r($dados); echo "</pre>";
 		
 		$u = new Usuarios();
 		//echo "<pre>"; print_r($dados); echo "</pre>";
-		$u->salvar($dados);
-		if($u->exists()){
+		
+		//echo "<pre>"; print_r($dados); echo "</pre>";
+		unset($dados['descricao_proj']);
+		if(!$u->salvar($dados)){
 			//	 	echo "<pre>"; print_r($this->session->userdata); echo "</pre>";
 			$feedback['cod'] = '1';
-			$feedback['msg'] = 'Usuário <strong>'.$u->nome_usu.'</strong> cadastrado.';
+			$feedback['msg'] = 'Usuário <strong>'.$dados['nome_usu'].'</strong> salvo.';
 		}
 		else {
 			$feedback['cod'] = '-1';
