@@ -24,7 +24,20 @@ class Indicadores_Controller extends CI_Controller {
 		$i = new Indicadores();
 		$i= $i->get_all();
 		$dados['dados'] = array();
+		foreach ($i as $k=>$v){
+			if($v['tipo_ind'] == 'D'){
+				$v['tipo_ind']= 'Deflator';
+			}
+			else if($v['tipo_ind'] == 'I'){
+				$v['tipo_ind'] = 'Inflator';
+			}
+			else if($v['tipo_ind'] == 'IM'){
+				$v['tipo_ind']= 'Item não Mensurável';
+			}
+			$i[$k]= $v;
+		}
 		$dados['dados'] = $i;
+		
 		$this->parser->parse('indicadores_listagem',$dados);
 	}
 	
@@ -48,6 +61,18 @@ class Indicadores_Controller extends CI_Controller {
 		$i= $i->get_by_id($_GET['id']);
 		$dados['dados'] = array();
 		$dados = $i[0];
+		$dados['select_inflator']='';
+		$dados['select_deflator']='';
+		$dados['select_item']='';
+		if($i[0]['tipo_ind'] == 'D'){
+			$dados['select_deflator']='selected="selected"';
+		}
+		else if($i[0]['tipo_ind'] == 'I'){
+			$dados['select_inflator']='selected="selected"';
+		}
+		else if($i[0]['tipo_ind'] == 'IM'){
+			$dados['select_item']='selected="selected"';
+		}
 		//echo "<pre>"; print_r($u[0]); echo "</pre>";
 		$this->parser->parse('indicadores_form',$dados);
 	}

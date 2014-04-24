@@ -175,27 +175,29 @@ function inserir_usuario($dados){
 	}
 	
 	function salvar($dados){
-		$u = $this->verifica_email($dados['email_usu']);
-		if($u->exists()){
-			return new Usuarios();
+		$uTemp = $this->verifica_email($dados['email_usu']);
+		$existe = false;
+		if($uTemp->exists() && empty($dados['id_usu'])){
+			$existe = true;
 		}
-		echo "testeeeeeeeeeeeeeeeeeeeeee";
-		//echo "<pre>"; print_r($dados); echo "</pre>";
-		$u->ativo			 = $dados['ativo'];
-		$u->nome_usu		 = $dados['nome_usu'];
-		$u->email_usu		 = $dados['email_usu'];
-		$u->senha_usu		 = $dados['senha_usu'];
-		$u->dt_criacao_usu	 = date('Y-m-d h:m:s');
-		$u->id_perf			 = $dados['id_perf'];
-		if(!empty($dados['id_usu'])){
-			$u->where('id_usu', $dados['id_usu']);
-			$u->update($dados);
-		}
-		else{
-			$u->save();
+			//echo "testeeeeeeeeeeeeeeeeeeeeee";
+			//echo "<pre>"; print_r($dados); echo "</pre>";
+			$u = new Usuarios();
+			$u->ativo			 = $dados['ativo'];
+			$u->nome_usu		 = $dados['nome_usu'];
+			$u->email_usu		 = $dados['email_usu'];
+			$u->senha_usu		 = $dados['senha_usu'];
+			$u->dt_criacao_usu	 = date('Y-m-d h:m:s');
+			$u->id_perf			 = $dados['id_perf'];
+			if(!empty($dados['id_usu'])){
+				$u->where('id_usu', $dados['id_usu']);
+				$u->update($dados);
+			}
+			else{
+				$u->save();
 		}
 		//echo "<pre>"; print_r($o); echo "</pre>";
-		return $u;
+		return $existe;
 	}
 }
 
