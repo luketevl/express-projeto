@@ -24,6 +24,14 @@ class Funcoes_Controller extends CI_Controller {
 		$f = new Funcoes();
 		$f= $f->get_all();
 		$dados['dados'] = array();
+		foreach ($f as $k=>$v){
+			$p = new Projetos();
+			$p = $p->get_by_id($v['id_proj']);
+			$v['nome_proj'] = $p[0]['nome_proj'];
+			$f[$k]= $v;
+			$v['ativo'] = ($v['ativo'] == 1) ? 'ok':'asterisk';
+			$f[$k]= $v;
+		}
 		$dados['dados'] = $f;
 		$this->parser->parse('funcoes_listagem',$dados);
 	}

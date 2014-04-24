@@ -24,9 +24,9 @@
 					{dados}
 						<tr>
 						<td style="display: none" id="id">{id_func}</td>
-							<td>{ativo}</td>
+							<td><span class="glyphicon glyphicon-{ativo}"></span></td>
 							<td>{nome_func}</td>
-							<td>{id_proj}</td>
+							<td>{nome_proj}</td>
 							<td style="text-align: right">
 								<button type="button" class="btn btn-default btn-sm" id='btn_edit'>
 									<span class="glyphicon glyphicon-pencil"></span> Editar
