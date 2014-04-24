@@ -24,7 +24,6 @@ class Usuarios_Controller extends CI_Controller {
 		$u = new Usuarios();
 		$u= $u->get_all();
 		$dados['dados'] = array();
-		$dados['dados'] = $u;
 		foreach ($u as $k=>$v){
 			$p = new Perfis();
 			$p = $p->get_by_id($v['id_perf']);
