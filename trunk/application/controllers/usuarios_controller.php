@@ -25,6 +25,13 @@ class Usuarios_Controller extends CI_Controller {
 		$u= $u->get_all();
 		$dados['dados'] = array();
 		$dados['dados'] = $u;
+		foreach ($u as $k=>$v){
+			$p = new Perfis();
+			$p = $p->get_by_id($v['id_perf']);
+			$v['descricao_perf'] = $p[0]['descricao_perf'];
+			$u[$k]= $v;
+		}
+		$dados['dados'] = $u;
 		$this->parser->parse('usuarios_listagem',$dados);
 	}
 	

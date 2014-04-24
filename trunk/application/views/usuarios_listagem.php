@@ -26,7 +26,7 @@
 						<td style="display: none" id="id">{id_usu}</td>
 							<td>{nome_usu}</td>
 							<td>{email_usu}</td>
-							<td>{id_perf}</td>
+							<td>{descricao_perf}</td>
 							<td style="text-align: right">
 								<button type="button" class="btn btn-default btn-sm" id='btn_edit'>
 									<span class="glyphicon glyphicon-pencil"></span> Editar
