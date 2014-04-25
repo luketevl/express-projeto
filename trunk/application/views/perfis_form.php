@@ -48,6 +48,16 @@
 		          <input type="checkbox" name="perm_indicadores" {perm_indicadores}> Cadastrar Indicadores
 		        </label>
 	        </div>
+	        <div class="checkbox">
+		        <label>
+		          <input type="checkbox" name="perm_funcoes" {perm_funcoes}> Cadastrar Funções
+		        </label>
+	        </div>
+	        <div class="checkbox">
+		        <label>
+		          <input type="checkbox" name="perm_tipo_solicitacoes" {perm_tipo_solicitacoes}> Cadastrar Tipo Solicitações
+		        </label>
+	        </div>
 	  </div>
 	      </div>
 	  <div class="form-group">

@@ -43,6 +43,15 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define('PERFIL_ADM',		'1');
 define('USER_PADRAO',		'1');
 
+define('POSICAO_PERF_USUARIO',		'1');
+define('POSICAO_PERF_SOLICITACAO',		'2');
+define('POSICAO_PERF_PROJETOS',		'3');
+define('POSICAO_PERF_PERFIL',		'4');
+define('POSICAO_PERF_OPCOES',		'5');
+define('POSICAO_PERF_INDICADORES',		'6');
+define('POSICAO_PERF_FUNCOES',		'7');
+define('POSICAO_PERF_TIPO_SOLICITACOES',		'8');
+
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

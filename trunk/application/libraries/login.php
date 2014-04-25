@@ -20,6 +20,7 @@ class Login{
 		$this->session->set_userdata('id_ent',$id);
 		$this->session->set_userdata('nome_usu',$e->stored->nome_usu);
 		$this->session->set_userdata('email_usu',$e->stored->email_usu);
+		$this->session->set_userdata('id_perf',$e->stored->id_perf);
 		//echo "<pre>"; print_r($this->session->userdata); echo "</pre>";die;
 	}
 	public function deslogar(){
