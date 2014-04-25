@@ -38,6 +38,8 @@ class Perfis_Controller extends CI_Controller {
 		$dados['perm_projetos'] = 'checked="checked"';
 		$dados['perm_solicitacoes'] = 'checked="checked"';
 		$dados['perm_usuario'] = 'checked="checked"';
+		$dados['perm_funcoes'] = 'checked="checked"';
+		$dados['perm_tipo_solicitacoes'] = 'checked="checked"';
 //		echo "<pre>"; print_r($_data); echo "</pre>";
 		$this->parser->parse('perfis_form',$dados);
 	}
@@ -54,6 +56,8 @@ class Perfis_Controller extends CI_Controller {
 		$dados['perm_perfis'] = empty($opcoes[3])?'':'checked="checked"';
 		$dados['perm_opcoes'] = empty($opcoes[4])?'':'checked="checked"';
 		$dados['perm_indicadores'] = empty($opcoes[5])?'':'checked="checked"';
+		$dados['perm_funcoes'] = empty($opcoes[6])?'':'checked="checked"';
+		$dados['perm_tipo_solicitacoes'] = empty($opcoes[7])?'':'checked="checked"';
 			
 		//echo "<pre>"; print_r($p[0]); echo "</pre>";
 		$this->parser->parse('perfis_form',$dados);
@@ -67,9 +71,11 @@ class Perfis_Controller extends CI_Controller {
 		$_data['perm_perfis']		= array_key_exists('perm_perfis',$_data)?'1':'0';
 		$_data['perm_opcoes']		= array_key_exists('perm_opcoes',$_data)?'1':'0';
 		$_data['perm_indicadores']	= array_key_exists('perm_indicadores',$_data)?'1':'0';
+		$_data['perm_funcoes']		= array_key_exists('perm_funcoes',$_data)?'1':'0';
+		$_data['perm_tipo_solicitacoes']	= array_key_exists('perm_tipo_solicitacoes',$_data)?'1':'0';
 		$dados['id_perf'] 			= $_data['id_perf'];	
 		$dados['descricao_perf'] 	= $_data['descricao_perf'];
-		$dados['opcoes_perf'] 		= $_data['perm_usuario'] . $_data['perm_solicitacoes'] . $_data['perm_projetos'] . $_data['perm_perfis'] . $_data['perm_opcoes'] . $_data['perm_indicadores'] ;		
+		$dados['opcoes_perf'] 		= $_data['perm_usuario'] . $_data['perm_solicitacoes'] . $_data['perm_projetos'] . $_data['perm_perfis'] . $_data['perm_opcoes'] . $_data['perm_indicadores']. $_data['perm_funcoes'] . $_data['perm_tipo_solicitacoes'] ;		
 		$p = new Perfis();
 		//echo "<pre>"; print_r($_data); echo "</pre>";
 		$p->salvar($dados);
