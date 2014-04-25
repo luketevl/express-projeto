@@ -43,9 +43,11 @@ class Solicitacoes_Controller extends CI_Controller {
 	
 	public function load_new(){
 		$dados['dados'] 					= array();
-		$dados['nome_proj'] 				= '';
-		$dados['descricao_proj'] 			= '';
+		$dados['sigla_soli'] 				= '';
+		$dados['identificacao_soli'] 			= '';
 		$dados['sigla_proj'] 				= '';
+		$dados['id_proj'] 					= '';
+		$dados['id_proj'] 					= '';
 		$dados['id_proj'] 					= '';
 		
 		
