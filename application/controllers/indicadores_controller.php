@@ -73,6 +73,13 @@ class Indicadores_Controller extends CI_Controller {
 		else if($i[0]['tipo_ind'] == 'IM'){
 			$dados['select_item']='selected="selected"';
 		}
+		
+		if($i[0]['regra_ind'] == 'PC'){
+			$dados['select_pc']='selected="selected"';
+		}
+		else if($i[0]['regra_ind'] == 'PF'){
+			$dados['select_pf']='selected="selected"';
+		}
 		//echo "<pre>"; print_r($u[0]); echo "</pre>";
 		$this->parser->parse('indicadores_form',$dados);
 	}

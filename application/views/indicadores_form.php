@@ -22,9 +22,9 @@
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="inputNome" class="col-sm-2 control-label">Descrição</label>
+		    <label for="inputNome" class="col-sm-2 control-label">Nome</label>
 		    <div class="col-sm-10">
-			  <input type="text" class="form-control" placeholder="Descrição" name="descricao_ind" required value="{descricao_ind}">
+			  <input type="text" class="form-control" placeholder="Nome" name="descricao_ind" required value="{descricao_ind}">
 		    </div>
 		  </div>
 
@@ -39,22 +39,25 @@
 		  
 
    		  <div class="form-group">
-		    <label for="input" class="col-sm-2 control-label">Sigla Indicador</label>
+		    <label for="input" class="col-sm-2 control-label">Sigla</label>
 		    <div class="col-sm-10">
-			  <input type="text" class="form-control" placeholder="Sigla Incador" name="sigla_ind" id="sigla_ind" value="{sigla_ind}">
+			  <input type="text" class="form-control" placeholder="Sigla Incador" name="sigla_ind" id="sigla_ind" value="{sigla_ind}" maxlength="2">
 		    </div>
 		  </div>
 		  
 			
   		  <div class="form-group">
-		    <label for="inputNome" class="col-sm-2 control-label">Regra Indicador</label>
+		  		    <label for="inputNome" class="col-sm-2 control-label">Regra</label>
 		    <div class="col-sm-10">
-				  <input type="text" class="form-control" placeholder="Regra Indicador" name="regra_ind" required name="regra_ind" value="{regra_ind}">
+			 <select class="form-control" name="regra_ind">
+			  <option value="PC" {select_pc}>Ponto Contado</option>
+			  <option value="PF" {select_pf}>Ponto de Função</option>
+			 </select>
 		    </div>
 		  </div>
 		  
   		  <div class="form-group">
-		    <label for="inputNome" class="col-sm-2 control-label">Versão Indicador</label>
+		    <label for="inputNome" class="col-sm-2 control-label">Versão</label>
 		    <div class="col-sm-10">
 				  <input type="text" class="form-control" placeholder="Versão Indicador" name="versao_ind" required name="versao_ind" value="{versao_ind}">
 		    </div>
@@ -68,14 +71,14 @@
 		  </div>
 		  
   		  <div class="form-group">
-		    <label for="inputNome" class="col-sm-2 control-label">Referencia Indicador</label>
+		    <label for="inputNome" class="col-sm-2 control-label">Referência Indicador</label>
 		    <div class="col-sm-10">
-				  <input type="text" class="form-control" placeholder="Referencia do Indicador" name="referencia_ind" required value="{referencia_ind}">
+				  <input type="text" class="form-control" placeholder="Referência do Indicador" name="referencia_ind" required value="{referencia_ind}">
 		    </div>
 		  </div>
 		  
   		  <div class="form-group">
-		    <label for="inputNome" class="col-sm-2 control-label">Data do Indicador</label>
+		    <label for="inputNome" class="col-sm-2 control-label">Data de Referência</label>
 		    <div class="col-sm-10">
 				  <input type="text" class="form-control campo-data" placeholder="Data de Referencia do Identificador" name="data_referencia_ind" required value="{data_referencia_ind}">
 		    </div>
