@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$('a').tooltip();
 
 	$('.campo-data').mask('9999-99-99');
-	$('.campo-double').mask('999.99');
+	$('.campo-double').mask('99.99');
 	$('.campo-senha').mask('******?******',{placeholder:""});
 
 	$('#cep').keypress(function(){

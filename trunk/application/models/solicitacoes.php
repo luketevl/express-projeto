@@ -84,7 +84,7 @@ class Solicitacoes extends DataMapper {
 	/**
 	 * Constructor: calls parent constructor
 	 */
-    function __construct($pd = NULL)
+    function __construct($sd = NULL)
 	{
 		parent::DataMapper();
     }
@@ -94,7 +94,7 @@ class Solicitacoes extends DataMapper {
 	//   Add your own custom initialisation code to the Model
 	// The parameter indicates if the current config was loaded from cache or not
 	// --------------------------------------------------------------------
-	/*function post_model_init($prom_cache = FALSE)
+	/*function post_model_init($srom_cache = FALSE)
 	{
 	}
 
@@ -116,12 +116,12 @@ class Solicitacoes extends DataMapper {
 	// --------------------------------------------------------------------
 
 	/* Example Rule
-	function _convert_written_numbers($pield, $parameter)
+	function _convert_written_numbers($sield, $sarameter)
 	{
 	 	$nums = array('one' => 1, 'two' => 2, 'three' => 3);
-	 	if(in_array($this->{$pield}, $nums))
+	 	if(in_array($this->{$sield}, $nums))
 		{
-			$this->{$pield} = $nums[$this->{$pield}];
+			$this->{$sield} = $nums[$this->{$sield}];
 	 	}
 	}
 	*/
@@ -150,21 +150,27 @@ class Solicitacoes extends DataMapper {
 	}
 	
 	function salvar($dados){
-		$p = new Projetos();
-		$p->nome_proj				 	 = $dados['nome_proj'];
-		$p->descricao_proj				 = $dados['descricao_proj'];
-		$p->sigla_proj					 = $dados['sigla_proj'];
-		$p->data_criacao_proj		 	 = date('Y-m-d h:m:s');
+		$s = new Solicitacoes();
+		$s->id_usu				 	 	 = $dados['id_usu'];
+		$s->id_tipo_soli				 = $dados['id_tipo_soli'];
+		$s->id_proj						 = $dados['id_proj'];
+		$s->data_soli					 = $dados['data_soli'];
+		$s->sigla_soli					 = $dados['sigla_soli'];
+		$s->identificacao_soli			 = $dados['identificacao_soli'];
+		$s->tipo_funcao_soli			 = $dados['tipo_funcao_soli'];
+		$s->tecnica_soli				 = $dados['tecnica_soli'];
+		$s->data_criacao_soli		 	 = date('Y-m-d h:m:s');
+		
 	//	echo "<pre>"; print_r($dados); echo "</pre>";
-		if(!empty($dados['id_proj'])){
-			$p->where('id_proj', $dados['id_proj']);
-			$p->update($dados);
+		if(!empty($dados['id_soli'])){
+			$s->where('id_soli', $dados['id_soli']);
+			$s->update($dados);
 		}
 		else{
-			$p->save();
-		//	echo $p->check_last_query();
+			$s->save();
+		//	echo $s->check_last_query();
 		}
-		return $p;
+		return $s;
 	}
 }
 
