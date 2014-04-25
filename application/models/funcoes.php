@@ -128,6 +128,9 @@ class Funcoes extends DataMapper {
 	function get_by_id($fd){
 		return $this->where('id_func',$fd)->get()->all_to_array();
 	}
+	function get_by_id_projeto($fd){
+		return $this->where('id_proj',$fd)->get()->all_to_array();
+	}
 	
 	function deletar($fd_func){
 		$this->db->select('*');

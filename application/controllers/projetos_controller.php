@@ -35,6 +35,8 @@ class Projetos_Controller extends CI_Controller {
 		$dados['sigla_proj'] 				= '';
 		$dados['id_proj'] 					= '';
 //		echo "<pre>"; print_r($_data); echo "</pre>";
+
+		$dados['funcoes_lista'] = array();
 		$this->parser->parse('projetos_form',$dados);
 	}
 	
@@ -44,6 +46,18 @@ class Projetos_Controller extends CI_Controller {
 		$dados['dados'] = array();
 		$dados = $p[0];
 		//echo "<pre>"; print_r($u[0]); echo "</pre>";
+		
+		$f = new Funcoes();
+		$f = $f->get_by_id_projeto($_GET['id']);
+		foreach ($f as $k=>$v){
+			$p = new Projetos();
+			$p = $p->get_by_id($v['id_proj']);
+			$v['nome_proj'] = $p[0]['nome_proj'];
+			$f[$k]= $v;
+			$v['ativo'] = ($v['ativo'] == 1) ? 'ok':'asterisk';
+			$f[$k]= $v;
+		}
+		$dados['funcoes_lista'] = $f;
 		$this->parser->parse('projetos_form',$dados);
 	}
 	
@@ -67,7 +81,6 @@ class Projetos_Controller extends CI_Controller {
 			echo "possui vinculos";			
 		}	
 	}
-	
 }
 
 /* End of file welcome.php */

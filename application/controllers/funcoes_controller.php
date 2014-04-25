@@ -83,7 +83,10 @@ class Funcoes_Controller extends CI_Controller {
 			echo "possui vinculos";			
 		}	
 	}
-	
+	public function get_by_id_projeto($id){
+		$f = new Funcoes();
+		return $f->get_by_id_projeto($id);
+	}
 }
 
 /* End of file welcome.php */
