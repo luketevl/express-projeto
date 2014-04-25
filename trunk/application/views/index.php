@@ -26,6 +26,7 @@ require_once ('includes/head.php');
 			<li value="<?php echo base_url();?>index.php/projetos_controller/"><a>Projetos</a></li>
 			<li value="<?php echo base_url();?>index.php/funcoes_controller/"><a>Funções</a></li>
 			<li value="<?php echo base_url();?>index.php/indicadores_controller/"><a>Indicadores</a></li>
+			<li value="<?php echo base_url();?>index.php/tipo_solicitacoes_controller/"><a>Tipo Solicitações</a></li>
 			<li value="<?php echo base_url();?>index.php/solicitacoes_controller/"><a>Solicitações</a></li>
 			<li><a href="<?php echo base_url();?>index.php/acesso/deslogar">Sair</a></li>
 		</ul>
