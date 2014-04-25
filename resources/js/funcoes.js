@@ -5,11 +5,6 @@ $(document).ready(function(){
 	$('.campo-double').mask('99.99');
 	$('.campo-senha').mask('******?******',{placeholder:""});
 
-	$('#cep').keypress(function(){
-		$('#grupoCep').removeClass('has-error');
-		$('#carrega').hide();
-	});
-
 	$('#btn-novo').click(function(){
 		var url = $(location).attr('href');
 		$(window.document.location).attr('href',url+'/load_new');
@@ -22,9 +17,7 @@ $(document).ready(function(){
 			var url = $(location).attr('href');
 			$(window.document.location).attr('href',url+'/load_form?id='+id);
 		}
-	})
-	$('button').click(function(){
-		if($(this).attr('id') == 'btn_remove'){
+		else if($(this).attr('id') == 'btn_remove'){
 			var temp = $(this).parent().parent();
 			var id = temp.find('td#id').html();
 			var url = $(location).attr('href');

@@ -2,7 +2,20 @@
 	require_once('includes/head.php');
 ?>
 <script>
+	$(document).ready(function(){
+			alert();
+		if($('#inputId').val() == ''){
+			$('#btnCadastrarFuncao').attr('disabled');
+			$('#btnCadastrarFuncao').tooltip('show');
+		}
+		$('#btnCadastrarFuncao').hover(function(){
+			if($('#id_proj').val() < 0){
+				$('#btnCadastrarFuncao').attr('disabled');
+				$('#btnCadastrarFuncao').tooltip('show');
+			}
+		});
 
+	});
 </script>
 <body>
 <section class="ajuste-98-porc">
@@ -34,40 +47,33 @@
 		    </div>
 		  </div>
 
-		  
-		 
-		  <div class="form-group" id="">
-		  		    <label for="inputNome" class="col-sm-2 control-label">Nome da Função</label>
-		    <div class="col-sm-10">
-				  <input type="text" class="form-control tag" placeholder="Sigla" name="funcoes[]" required value="{nome_func}">
-			        <a href="#" data-action="add">Adicionar</a>
-			        <a href="#" data-action="delete">Remover</a>
-		    </div>
-		  </div>
-		  
-		   <blockquote>
-	  		<p> Lista de Funções</p>
-	      </blockquote>
-		  
-		  <div class="table-responsive" id="table-funcoes">
-		  	<table class="table table-striped table-bordered table-hover">
-				<thead>
-					<tr>
-						<th style="display: none;">ID</th>	
-						<th>Nome</th>
-						<th>Ações</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-		  	</table>
-	</div>
-		  
-		  
-			 <div class="form-group">
+		  <div class="form-group">
 	    <div class="col-sm-offset-2 col-sm-10">
 		      <button type="submit" class="btn btn-default" id="btnCadastrar" >Salvar</button>
+				<button class="btn btn-success" data-toggle="modal" data-target="#myModal" id="btnCadastrarFuncao" title="Projeto deve estar Cadastrado para poder vincular Funções.">
+				  Cadastrar Funções
+				</button>
 	    </div>
 	  </div>
+	  
 		</form>
 </section>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <iframe src="<?php echo base_url()?>index.php/funcoes_controller/load_new"	style="width: 100%; padding: 0px; margin: 0px; border: none; display: block; min-height: 600px; overflow: hidden;">
+			</iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div> 
