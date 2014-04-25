@@ -7,12 +7,12 @@
 	  <p> Cadastro de Perfis</p>
 	</blockquote>
 	
-	<form class="form-horizontal" role="form" action='save' method='POST'>
+	<form class="form-horizontal" role="form" id="cadastrar" method="POST" action="save">
       <input type="hidden" class="form-control" id="inputId" placeholder="Digite o nome do perfil" name='id_perf' value='{id_perf}' >
 	  <div class="form-group">
 	    <label for="inputNome" class="col-sm-2 control-label">Nome</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="inputNome" placeholder="Digite o nome do perfil" name='descricao_perf' value='{descricao_perf}'>
+	      <input type="text" class="form-control" id="inputNome" placeholder="Digite o nome do perfil" name='descricao_perf' value='{descricao_perf}' required>
 	    </div>
 	  </div>
 

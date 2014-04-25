@@ -3,18 +3,18 @@
 ?>
 <script>
 	$(document).ready(function(){
-			alert();
-		if($('#inputId').val() == ''){
-			$('#btnCadastrarFuncao').attr('disabled');
-			$('#btnCadastrarFuncao').tooltip('show');
-		}
 		$('#btnCadastrarFuncao').hover(function(){
-			if($('#id_proj').val() < 0){
-				$('#btnCadastrarFuncao').attr('disabled');
+			if($('#inputId').val() == ''){
+				$('#btnCadastrarFuncao').attr('disabled','disabled');
 				$('#btnCadastrarFuncao').tooltip('show');
 			}
 		});
-
+		$('input[type="text"]').focus(function(){
+			$('#btnCadastrarFuncao').tooltip('destroy');
+		});
+		$('input[type="text"]').focusout(function(){
+			$('#btnCadastrarFuncao').tooltip('show');
+		});
 	});
 </script>
 <body>
@@ -50,22 +50,44 @@
 		  <div class="form-group">
 	    <div class="col-sm-offset-2 col-sm-10">
 		      <button type="submit" class="btn btn-default" id="btnCadastrar" >Salvar</button>
-				<button class="btn btn-success" data-toggle="modal" data-target="#myModal" id="btnCadastrarFuncao" title="Projeto deve estar Cadastrado para poder vincular Funções.">
-				  Cadastrar Funções
-				</button>
+				<input type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" id="btnCadastrarFuncao" title="Projeto deve estar Cadastrado para poder vincular Funções." value="Cadastrar Funções">
 	    </div>
 	  </div>
-	  
-		</form>
-</section>
+		
 
+		<blockquote>
+	  <p> Funções Vinculadas</p>
+	</blockquote>
+		
+		<div class="table-responsive">
+			  	<table class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+							<th style="display: none;">ID</th>	
+							<th>Ativo</th>
+							<th>Nome</th>
+						</tr>
+					</thead>
+					<tbody>
+						{funcoes_lista}
+							<tr>
+							<td style="display: none" id="id">{id_func}</td>
+								<td><span class="glyphicon glyphicon-{ativo}"></span></td>
+								<td>{nome_func}</td>
+						{/funcoes_lista}
+							</tr>
+					</tbody>
+			  	</table>
+		</div>
+		</section>
 
+</form>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body">
         <iframe src="<?php echo base_url()?>index.php/funcoes_controller/load_new"	style="width: 100%; padding: 0px; margin: 0px; border: none; display: block; min-height: 600px; overflow: hidden;">
