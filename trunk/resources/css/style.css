@@ -8,6 +8,6 @@
 	width: 98%;
 }
 
-#menu > ul > li:hover{
+#menu > ul > li:hover,th:hover{
 	cursor:pointer;
 }

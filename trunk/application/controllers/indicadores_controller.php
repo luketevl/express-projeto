@@ -19,7 +19,7 @@ class Indicadores_Controller extends CI_Controller {
 	 */
 	public function index(){
 		if(empty($this->session->userdata['id_ent'])){
-		//	redirect('acesso');
+			redirect('acesso');
 		}
 		$i = new Indicadores();
 		$i= $i->get_all();
