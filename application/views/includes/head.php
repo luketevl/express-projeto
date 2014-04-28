@@ -7,7 +7,7 @@
 		<meta name="description" content="Responsive Retina-Friendly Menu with different, size-dependent layouts" />
 		<meta name="keywords" content="responsive menu, retina-ready, icon font, media queries, css3, transition, mobile" />
 		<meta name="author" content="Codrops" />
-		<title>Calculador de Frete</title>
+		<title>Bem Vindo - Express</title>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -44,6 +44,10 @@
 
 		<script src="<?php echo base_url()?>resources/js/jquery-upload.js "></script>
 
+		<script src="<?php echo base_url()?>resources/js/tablesorter/jquery.tablesorter.js"></script>
+		<script src="<?php echo base_url()?>resources/js/tablesorter/wid.js"></script>
+		
+		
 		<script src="<?php echo base_url()?>resources/js/funcoes.js"></script>
 
 
@@ -67,6 +71,9 @@
 	      	}
 	      	return obj.cod;
 	}
+		$(function(){
+			  $("table").tablesorter();
+			});
 		});
 
 </script>

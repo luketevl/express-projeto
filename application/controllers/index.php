@@ -19,7 +19,7 @@ class Index extends CI_Controller {
 	 */
 	public function index(){
 		if(empty($this->session->userdata['id_ent'])){
-		//	redirect('acesso');
+			redirect('acesso');
 		}
 		$dados = array();
 		$this->parser->parse('index',$dados);

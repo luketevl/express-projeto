@@ -19,7 +19,7 @@ class Tipo_Solicitacoes_Controller extends CI_Controller {
 	 */
 	public function index(){
 		if(empty($this->session->userdata['id_ent'])){
-		//	redirect('acesso');
+			redirect('acesso');
 		}
 		$s = new Tipo_Solicitacoes();
 		$s= $s->get_all();

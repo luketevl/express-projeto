@@ -19,7 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index(){
 		if(empty($this->session->userdata['id_ent'])){
-			//redirect('acesso');
+			redirect('acesso');
 		}
 		$opcoes_menu = $this->monta_menu();
 		$dados['dados'] = array();

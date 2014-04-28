@@ -19,7 +19,7 @@ class Projetos_Controller extends CI_Controller {
 	 */
 	public function index(){
 		if(empty($this->session->userdata['id_ent'])){
-		//	redirect('acesso');
+			redirect('acesso');
 		}
 		$p = new Projetos();
 		$p= $p->get_all();
